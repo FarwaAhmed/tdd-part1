@@ -3,7 +3,8 @@ package com.sibisoft.tddPractical;
 public abstract class Money {
 
 	protected int amount;
-
+	protected String currency;
+	
 	public boolean equals(Object obj){
 		Money moneyObj = (Money) obj;
 		return (amount == moneyObj.amount &&
@@ -18,4 +19,7 @@ public abstract class Money {
 	}
 	
 	public abstract Money times(int multiplier);
+	public String currency() {
+		return currency;
+	}
 }
