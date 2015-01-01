@@ -1,6 +1,6 @@
 package com.sibisoft.tddPractical;
 
-public class Money {
+public class Money implements Expression{
 
 	/* Instance Variables*/
 	protected int amount;
@@ -43,7 +43,10 @@ public class Money {
 	public Money sum(Money addend){
 		return new Money(getAmount() + addend.getAmount(),getCurrency());
 	}
-	
+	// almost similar as sum
+	public Expression plus(Money addend){
+		return new Money(getAmount() + addend.getAmount(),getCurrency());
+	}
 	/* For Debugging*/
 	public String toString(){
 		return "amount="+getAmount()+" currency="+getCurrency();

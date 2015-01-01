@@ -9,8 +9,15 @@ public class DollarTest {
 	@Test
 	public void testSimpleAddition(){
 		//Expression = 2$ + 2CHF; at rate 2:1 2chf= 1$ ; means result should be 3$;
-		Money sum = Money.dollar(2).sum(Money.dollar(2));
-		assertEquals(Money.dollar(4), sum);
+		
+		Money two = Money.dollar(2);
+		Expression expression = two.plus(two);
+		Bank bank = new Bank();
+		
+		// In bank: apply exchange rates to result returned by expression
+		Money reducedMoney = bank.reduce(expression,"USD");
+		
+		assertEquals(Money.dollar(4), reducedMoney);
 	}
 	@Test
 	public void testSimpleAdditionForDifferentCurrencies(){
