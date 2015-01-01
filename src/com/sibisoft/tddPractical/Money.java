@@ -40,6 +40,9 @@ public class Money {
 	public Money times(int multiplier){
 		return new Money(getAmount() * multiplier,getCurrency());
 	}
+	public Money sum(Money addend){
+		return new Money(getAmount() + addend.getAmount(),getCurrency());
+	}
 	
 	/* For Debugging*/
 	public String toString(){
