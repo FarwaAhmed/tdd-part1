@@ -33,4 +33,10 @@ public class Sum implements Expression {
 		return new Money(amount, toCurrency);
 	}
 
+	@Override
+	public Expression plus(Expression addend) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

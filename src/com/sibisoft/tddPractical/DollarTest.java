@@ -9,8 +9,8 @@ public class DollarTest {
 	@Test
 	public void testMixedAddition() {
 		// 5$ + 10 CHF = 10$ when rate is 2 : 1
-		Money fiveBucks = Money.dollar(5);
-		Money tenFrancs = Money.franc(10);
+		Expression fiveBucks = Money.dollar(5);
+		Expression tenFrancs = Money.franc(10);
 		Bank bank = new Bank();
 		bank.addRate("CHF", "USD", 2);
 		Money reducedMoney = bank.reduce(fiveBucks.plus(tenFrancs), "USD");
