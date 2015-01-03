@@ -7,6 +7,13 @@ import org.junit.Test;
 public class DollarTest {
 
 	@Test
+	public void testPlusSameCurrencyReturnsMoney() {
+		Expression sum = Money.dollar(1).plus(Money.dollar(1));
+		assertFalse(sum instanceof Money); // needs correction in Money.plus
+		assertTrue(sum instanceof Expression);
+	}
+	
+	@Test
 	public void testSumTimes() {
 		// testing the implementation of Sum.times : (5$ + 10CHF) * 2 
 		Expression fiveBucks = Money.dollar(5);
