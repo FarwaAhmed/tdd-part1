@@ -2,34 +2,34 @@ package com.sibisoft.tddPractical;
 
 public class Sum implements Expression {
 
-	private Money augend;
-	private Money addend;
+	private Expression augend;
+	private Expression addend;
 
-	public Money getAugend() {
+	public Expression getAugend() {
 		return augend;
 	}
 
-	public void setAugend(Money augend) {
+	public void setAugend(Expression augend) {
 		this.augend = augend;
 	}
 
-	public Money getAddend() {
+	public Expression getAddend() {
 		return addend;
 	}
 
-	public void setAddend(Money addend) {
+	public void setAddend(Expression addend) {
 		this.addend = addend;
 	}
 
-	public Sum(Money augend, Money addend) {
+	public Sum(Expression augend, Expression addend) {
 		this.augend = augend;
 		this.addend = addend;
 	}
 
 	@Override
 	public Money reduce(Bank bank, String toCurrency) {
-		int amount = this.getAugend().getAmount()
-				+ this.getAddend().getAmount();
+		int amount = this.getAugend().reduce(bank, toCurrency).getAmount()
+				+ this.getAddend().reduce(bank, toCurrency).getAmount();
 		return new Money(amount, toCurrency);
 	}
 
