@@ -37,6 +37,7 @@ public class Money implements Expression {
 	}
 
 	/* Arithmetic operations */
+	@Override
 	public Expression times(int multiplier) {
 		return new Money(getAmount() * multiplier, getCurrency());
 	}

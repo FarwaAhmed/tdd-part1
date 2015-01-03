@@ -7,8 +7,22 @@ import org.junit.Test;
 public class DollarTest {
 
 	@Test
+	public void testSumTimes() {
+		// testing the implementation of Sum.times : (5$ + 10CHF) * 2 
+		Expression fiveBucks = Money.dollar(5);
+		Expression tenFrancs = Money.franc(10);
+		
+		Bank bank = new Bank();
+		bank.addRate("CHF", "USD", 2);
+		
+		Expression sum = new Sum(fiveBucks, tenFrancs).times(2);
+		Money reducedMoney = bank.reduce(sum, "USD");
+		assertEquals(Money.dollar(20), reducedMoney);
+	}
+	
+	@Test
 	public void testSumPlusMoney() {
-		// testing that whether adding Sum and Money is possible : (5$ + 10CHF) + 5$ 
+		// testing the implementation of Sum.plus : (5$ + 10CHF) + 5$ 
 		Expression fiveBucks = Money.dollar(5);
 		Expression tenFrancs = Money.franc(10);
 		

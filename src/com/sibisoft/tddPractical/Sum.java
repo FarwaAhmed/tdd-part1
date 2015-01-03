@@ -37,5 +37,11 @@ public class Sum implements Expression {
 	public Expression plus(Expression addend) {
 		return new Sum(this, addend);
 	}
+	
+	@Override
+	public Expression times(int multiplier) {
+		// (2 + 3) * 7 = 2*7 + 3*7
+		return new Sum(this.getAugend().times(multiplier), this.getAddend().times(multiplier));
+	}
 
 }
