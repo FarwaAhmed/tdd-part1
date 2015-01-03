@@ -40,10 +40,11 @@ public class Money implements Expression{
 	public Money times(int multiplier){
 		return new Money(getAmount() * multiplier,getCurrency());
 	}
-	public Money sum(Money addend){
+	/*public Money sum(Money addend){
 		return new Money(getAmount() + addend.getAmount(),getCurrency());
-	}
-	// almost similar as sum
+	}*/
+	/* Expressions*/
+	// almost similar as sum, return type:Expression
 	public Expression plus(Money addend){
 		return new Money(getAmount() + addend.getAmount(),getCurrency());
 	}
