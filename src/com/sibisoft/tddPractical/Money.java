@@ -46,8 +46,15 @@ public class Money implements Expression{
 	/* Expressions*/
 	// almost similar as sum, return type:Expression
 	public Expression plus(Money addend){
-		return new Money(getAmount() + addend.getAmount(),getCurrency());
+		return new Sum(this,addend);
 	}
+	
+	/* overridden methods */
+	@Override
+	public Money reduce(String toCurrency){
+		return this;
+	}
+	
 	/* For Debugging*/
 	public String toString(){
 		return "amount="+getAmount()+" currency="+getCurrency();

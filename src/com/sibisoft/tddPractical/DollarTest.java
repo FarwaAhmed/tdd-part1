@@ -6,14 +6,31 @@ import org.junit.Test;
 
 public class DollarTest {
 
-	@Test(expected = ClassCastException.class)
+	@Test
+	public void testReduceMoney(){
+		
+		Bank bank = new Bank();
+		Money reducedMoney = bank.reduce(Money.dollar(3),"USD");
+		assertEquals(Money.dollar(3), reducedMoney);
+	}
+	
+	@Test
+	public void testReduceSum(){
+		
+		Expression sum = new Sum(Money.dollar(2),Money.dollar(2));
+		Bank bank = new Bank();
+		Money reducedMoney = bank.reduce(sum,"USD");
+		assertEquals(Money.dollar(4), reducedMoney);
+	}
+	
+	@Test
 	public void testPlusReturnsSum(){
 		//plus should return sum instead of Money 
 		
 		Money two = Money.dollar(2);
 		Expression resultInTermsOfMoney = two.plus(two);
 		
-		Sum sum = (Sum) resultInTermsOfMoney; // ClassCastException because plus is returning Money insteadd of sum
+		Sum sum = (Sum) resultInTermsOfMoney; // expected = ClassCastException if plus is returns Money instead of Sum
 		assertEquals(two, sum.getAugend());
 		assertEquals(two, sum.getAddend());
 	}

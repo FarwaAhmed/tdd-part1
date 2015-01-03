@@ -19,11 +19,14 @@ public class Sum implements Expression{
 	}
 	
 	public Sum(Money augend, Money addend){
-		
+		this.augend = augend;
+		this.addend = addend;
 	}
-	/*@Override
-	public Money getResult(Money money1, Money money2) {
-		return money1.sum(money2);
-		
-	}*/
+	
+	@Override
+	public Money reduce(String toCurrency){
+		int amount = this.getAugend().getAmount() + this.getAddend().getAmount();
+		return new Money(amount,toCurrency);
+	}
+	
 }
