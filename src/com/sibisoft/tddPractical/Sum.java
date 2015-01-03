@@ -35,8 +35,7 @@ public class Sum implements Expression {
 
 	@Override
 	public Expression plus(Expression addend) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Sum(this, addend);
 	}
 
 }
