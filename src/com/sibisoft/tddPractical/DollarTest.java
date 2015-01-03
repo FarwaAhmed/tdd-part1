@@ -7,6 +7,20 @@ import org.junit.Test;
 public class DollarTest {
 
 	@Test
+	public void testArrayEquals(){
+		
+		assertArrayEquals(new Object[] {"ABC"}, new Object[] {"ABC"});
+	}
+	
+	@Test
+	public void testReduceMoneyDifferentCurrency(){
+		
+		Bank bank = new Bank();
+		bank.addRate("CHF","USD",2);
+		Money reducedMoney = bank.reduce(Money.franc(2),"USD");
+		assertEquals(Money.dollar(1), reducedMoney);
+	}
+	@Test
 	public void testReduceMoney(){
 		
 		Bank bank = new Bank();
